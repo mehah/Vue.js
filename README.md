@@ -32,8 +32,8 @@ public class IndexController extends Window {
 	public void init(JRenderContext arg0) {
 		app = new Vue();
 
-		app.setEl("#app");
-		app.setData("message", "Hello Vue!");
+		app.el("#app");
+		app.data("message", "Hello Vue!");
 		app.registerMethod("reverseMessage");
 
 		app.init();
@@ -41,7 +41,7 @@ public class IndexController extends Window {
 
 	public void reverseMessage() {
 		String message = (String) app.getData("message");
-		app.setData("message", new StringBuilder(message).reverse().toString());
+		app.data("message", new StringBuilder(message).reverse().toString());
 	}
 }
 ```
