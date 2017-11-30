@@ -29,25 +29,19 @@ IndexController.java
 public class IndexController extends Window {
 	private Vue app;
 	
-	public void init(JRenderContext arg0) {
-		final Map<String, Object> parameters = new HashMap<String, Object>();
-		final JsonObject data = new JsonObject();
-		final Map<String, FunctionHandle> methods = new HashMap<String, FunctionHandle>();
-				
-		parameters.put("el", "#app");
-		parameters.put("data", data);
-		parameters.put("methods", methods);
+	public void init(JRenderContext arg0) {		
+		app = new Vue();
 		
-		data.addProperty("message", "Hello Vue!");
+		app.setEl("#app");
+		app.setData("message", "Hello Vue!");
+		app.registerMethod("reverseMessage");
 		
-		methods.put("reverseMessage", new FunctionHandle("reverseMessage"));		
-		
-		this.app = new Vue(this, parameters);
+		app.init();
 	}
 	
 	public void reverseMessage() {
-		String message = app.prop("message", String.class);
-		app.prop("message", new StringBuilder(message).reverse().toString());
+		String message = (String) app.getData("message");
+		app.setData("message", new StringBuilder(message).reverse().toString());
 	}
 }
 ```
