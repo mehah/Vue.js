@@ -77,6 +77,25 @@ public class Vue extends DOM {
 
 		mixins().add(options);
 	}
+	
+	public List<String> props() {
+		List<String> props = (List<String>) options.get("props");
+
+		if (props == null) {
+			props = new ArrayList<String>();
+			this.options.put("props", props);
+		}
+
+		return props;
+	}
+
+	public void props(String prop) {
+		if (this.initialized) {
+			return;
+		}
+
+		props().add(prop);
+	}
 
 	private Map<String, Object> __data() {
 		Map<String, Object> data = (Map<String, Object>) this.options.get("data");
