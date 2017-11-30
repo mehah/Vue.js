@@ -2,13 +2,15 @@ Vue
 =========
 Plugin to use [Vue](https://vuejs.org/) with [jRender](https://github.com/mehah/jRender).
 
-Example
+Installing
 ========
 add in <plugins /> jrender.config.xml
 ```xml
 <plugin class="org.vuejs.Core"/>
 ```
 
+Example
+========
 index.html
 ```html
 <html>
